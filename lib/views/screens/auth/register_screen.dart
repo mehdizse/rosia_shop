@@ -2,6 +2,7 @@ import 'package:ecommerce_app/logic/controllers/auth_controller.dart';
 import 'package:ecommerce_app/routes/routes.dart';
 import 'package:ecommerce_app/utils/string_validation.dart';
 import 'package:ecommerce_app/views/widgets/auth/bottom_container.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../../utils/theme.dart';
@@ -153,7 +154,30 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         const SizedBox(
                           height: 50,
                         ),
-                        AuthButton(text: "Sign Up", onPressed: () {}),
+                        GetBuilder<AuthController>(builder: (_) {
+                          return AuthButton(
+                              text: "Sign Up",
+                              onPressed: () {
+                                if (controller.isChecked == false) {
+                                  Get.snackbar(
+                                    "Checkbox not checked",
+                                    "Please accept terms and conditions",
+                                    snackPosition: SnackPosition.BOTTOM,
+                                    backgroundColor: Colors.green,
+                                    colorText: Colors.white,
+                                  );
+                                } else if (formKey.currentState!.validate()) {
+                                  String name = nameController.text.trim();
+                                  String email = emailController.text.trim();
+                                  String password = passwordController.text;
+                                  controller.signUpUsingEmail(
+                                      name: name,
+                                      email: email,
+                                      password: password);
+                                  controller.isChecked = true;
+                                }
+                              });
+                        }),
                       ],
                     ),
                   ),

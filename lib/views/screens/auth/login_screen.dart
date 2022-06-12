@@ -145,7 +145,18 @@ class _LoginScreenState extends State<LoginScreen> {
                         const SizedBox(
                           height: 50,
                         ),
-                        AuthButton(text: "Log In", onPressed: () {}),
+                        GetBuilder<AuthController>(builder: (_) {
+                          return AuthButton(
+                              text: "Log In",
+                              onPressed: () {
+                                if (formKey.currentState!.validate()) {
+                                  String email = emailController.text.trim();
+                                  String password = passwordController.text;
+                                  controller.logInUsingEmail(
+                                      email: email, password: password);
+                                }
+                              });
+                        }),
                         const SizedBox(
                           height: 20,
                         ),

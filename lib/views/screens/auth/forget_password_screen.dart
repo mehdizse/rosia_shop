@@ -1,3 +1,4 @@
+import 'package:ecommerce_app/logic/controllers/auth_controller.dart';
 import 'package:ecommerce_app/utils/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -16,6 +17,7 @@ class ForgetPasswordScreen extends StatefulWidget {
 class _ForgetPasswordScreenState extends State<ForgetPasswordScreen> {
   final formKey = GlobalKey<FormState>();
   final TextEditingController emailController = TextEditingController();
+  final controller = Get.find<AuthController>();
 
   @override
   Widget build(BuildContext context) {
@@ -75,7 +77,7 @@ class _ForgetPasswordScreenState extends State<ForgetPasswordScreen> {
                     height: 50,
                   ),
                   Image.asset(
-                    "assets/forgetpass_copy.png",
+                    "assets/forgetpassword.png",
                     width: 250,
                   ),
                   const SizedBox(
@@ -104,10 +106,17 @@ class _ForgetPasswordScreenState extends State<ForgetPasswordScreen> {
                   const SizedBox(
                     height: 20,
                   ),
-                  AuthButton(
-                    onPressed: () {},
-                    text: "SEND",
-                  ),
+                  GetBuilder<AuthController>(builder: (_) {
+                    return AuthButton(
+                      onPressed: () {
+                        if (formKey.currentState!.validate()) {
+                          controller.resetPassword(
+                              email: emailController.text.trim());
+                        }
+                      },
+                      text: "SEND",
+                    );
+                  }),
                 ],
               ),
             ),
