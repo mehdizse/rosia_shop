@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "593761440465",
+    "project_id": "rosia-shop",
+    "storage_bucket": "rosia-shop.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:593761440465:android:69f3a0dac26c431e652bf0",
+        "android_client_info": {
+          "package_name": "com.rosia.ecommerce_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "593761440465-11serf1q2lueqblqs8rvl0569l68t9cq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCul77NzuyTBVS6Yh0SzZEmqG1jhXjTD9w"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "593761440465-11serf1q2lueqblqs8rvl0569l68t9cq.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
