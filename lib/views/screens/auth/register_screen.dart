@@ -1,4 +1,5 @@
 import 'package:ecommerce_app/logic/controllers/auth_controller.dart';
+import 'package:ecommerce_app/routes/routes.dart';
 import 'package:ecommerce_app/utils/string_validation.dart';
 import 'package:ecommerce_app/views/widgets/auth/bottom_container.dart';
 import 'package:flutter/material.dart';
@@ -161,7 +162,9 @@ class _RegisterScreenState extends State<RegisterScreen> {
               BottomContainer(
                 text: "Already have an account ? ",
                 textType: "Login In",
-                onPressed: () {},
+                onPressed: () {
+                  Get.offNamed(Routes.loginPage);
+                },
               ),
             ],
           ),

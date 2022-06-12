@@ -114,7 +114,7 @@ class WelcomeScreen extends StatelessWidget {
                   ),
                   GestureDetector(
                     onTap: () {
-                      Get.offNamed("/RegisterPage");
+                      Get.offNamed(Routes.registerPage);
                     },
                     child: const TextUtil(
                         text: "Sign Up",

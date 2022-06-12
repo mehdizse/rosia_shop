@@ -10,14 +10,18 @@ class AppRoute {
 
   static final routes = [
     GetPage(name: Routes.welcomePage, page: () => const WelcomeScreen()),
-    GetPage(name: Routes.loginPage, page: () => const LoginScreen()),
+    GetPage(
+        name: Routes.loginPage,
+        page: () => LoginScreen(),
+        binding: AuthBinding()),
     GetPage(
         name: Routes.registerPage,
         page: () => const RegisterScreen(),
         binding: AuthBinding()),
     GetPage(
         name: Routes.forgetPasswordPage,
-        page: () => const ForgetPasswordScreen()),
+        page: () => const ForgetPasswordScreen(),
+        binding: AuthBinding()),
   ];
 }
 
