@@ -1,6 +1,6 @@
-# get_x_project
+# rosia_shop
 
-A new Flutter project.
+An ecommerce application.
 
 ## Getting Started
 
