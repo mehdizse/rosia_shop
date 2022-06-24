@@ -1,0 +1,7 @@
+<resources>
+    <string name="facebook_app_name">Rosia Shop</string>
+    <string name="facebook_app_id">1404575523373966</string>
+    <string name="fb_login_protocol_scheme">fb1404575523373966</string>
+    <string name="facebook_client_token">56789</string>
+
+</resources>

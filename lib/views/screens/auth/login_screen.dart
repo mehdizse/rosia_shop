@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:ecommerce_app/utils/theme.dart';
 import 'package:ecommerce_app/views/widgets/auth/auth_button.dart';
 import 'package:ecommerce_app/views/widgets/text_util.dart';
+import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
 import 'package:get/get.dart';
 import '../../../logic/controllers/auth_controller.dart';
 import '../../../routes/routes.dart';
@@ -173,14 +174,20 @@ class _LoginScreenState extends State<LoginScreen> {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             InkWell(
-                                onTap: () {},
+                                onTap: () {
+                                  controller.signUpUsingFacebook();
+                                },
                                 child: Image.asset("assets/facebook.png")),
                             const SizedBox(
                               width: 20,
                             ),
-                            InkWell(
-                                onTap: () {},
-                                child: Image.asset("assets/google.png")),
+                            GetBuilder<AuthController>(builder: (_) {
+                              return InkWell(
+                                  onTap: () {
+                                    controller.signUpUsginGoogle();
+                                  },
+                                  child: Image.asset("assets/google.png"));
+                            })
                           ],
                         ),
                       ],

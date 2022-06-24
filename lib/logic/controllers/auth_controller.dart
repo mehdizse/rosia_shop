@@ -1,14 +1,21 @@
 import 'package:ecommerce_app/routes/routes.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
 import 'package:get/get.dart';
 import 'package:get/get_connect/http/src/utils/utils.dart';
+import 'package:google_sign_in/google_sign_in.dart';
+
+import '../../models/facebook_model.dart';
 
 class AuthController extends GetxController {
   bool isVisibility = false;
   bool isChecked = false;
   FirebaseAuth auth = FirebaseAuth.instance;
+  FacebookModel? facebookModel;
   var displayUserName = "";
+  var displayUserPhoto = "";
+  var googleSignIn = GoogleSignIn().signIn();
 
   void visibility() {
     isVisibility = !isVisibility;
@@ -144,9 +151,34 @@ class AuthController extends GetxController {
     }
   }
 
-  void signUpUsingFacebook() {}
+  void signUpUsingFacebook() async {
+    final LoginResult loginResult = await FacebookAuth.instance.login();
+    final data = await FacebookAuth.instance.getUserData();
+    facebookModel = FacebookModel.fromJson(data);
+    print("===================");
+    print(facebookModel!.name);
+    print(facebookModel!.email);
+    print("===================");
+    Get.offNamed(Routes.mainPage);
+  }
 
-  void signUpUsginGoogle() {}
+  Future<void> signUpUsginGoogle() async {
+    try {
+      final GoogleSignInAccount? googleUser = await googleSignIn;
+      displayUserName = googleUser!.displayName!;
+      displayUserPhoto = googleUser.photoUrl!;
+      update();
+      Get.offNamed(Routes.mainPage);
+    } catch (error) {
+      Get.snackbar(
+        "Error!",
+        error.toString(),
+        snackPosition: SnackPosition.BOTTOM,
+        backgroundColor: Colors.green,
+        colorText: Colors.white,
+      );
+    }
+  }
 
   void logout() {}
 }
