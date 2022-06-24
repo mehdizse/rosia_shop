@@ -12,11 +12,12 @@ class MainScreen extends StatelessWidget {
     return SafeArea(
       child: Obx(() {
         return Scaffold(
+          backgroundColor: context.theme.backgroundColor,
           appBar: AppBar(
             elevation: 0,
             title: Text(controller.title[controller.currentIndex.value]),
             centerTitle: true,
-            backgroundColor: Get.isDarkMode ? mainColor : darkGreyClr,
+            backgroundColor: Get.isDarkMode ? darkGreyClr : mainColor,
             leading: Container(),
             actions: [
               IconButton(
@@ -25,50 +26,49 @@ class MainScreen extends StatelessWidget {
               ),
             ],
           ),
-          backgroundColor: Get.isDarkMode ? Colors.white : darkGreyClr,
           bottomNavigationBar: BottomNavigationBar(
-              backgroundColor: Get.isDarkMode ? Colors.white : darkGreyClr,
+              backgroundColor: Get.isDarkMode ? darkGreyClr : Colors.white,
               currentIndex: controller.currentIndex.value,
               type: BottomNavigationBarType.fixed,
               items: [
                 BottomNavigationBarItem(
                     activeIcon: Icon(
                       Icons.home,
-                      color: Get.isDarkMode ? mainColor : pinkClr,
+                      color: Get.isDarkMode ? pinkClr : mainColor,
                     ),
                     icon: Icon(
                       Icons.home,
-                      color: Get.isDarkMode ? Colors.black : Colors.white,
+                      color: Get.isDarkMode ? Colors.white : Colors.black,
                     ),
                     label: ''),
                 BottomNavigationBarItem(
                     activeIcon: Icon(
                       Icons.category,
-                      color: Get.isDarkMode ? mainColor : pinkClr,
+                      color: Get.isDarkMode ? pinkClr : mainColor,
                     ),
                     icon: Icon(
                       Icons.category,
-                      color: Get.isDarkMode ? Colors.black : Colors.white,
+                      color: Get.isDarkMode ? Colors.white : Colors.black,
                     ),
                     label: ''),
                 BottomNavigationBarItem(
                     activeIcon: Icon(
                       Icons.favorite,
-                      color: Get.isDarkMode ? mainColor : pinkClr,
+                      color: Get.isDarkMode ? pinkClr : mainColor,
                     ),
                     icon: Icon(
                       Icons.favorite,
-                      color: Get.isDarkMode ? Colors.black : Colors.white,
+                      color: Get.isDarkMode ? Colors.white : Colors.black,
                     ),
                     label: ''),
                 BottomNavigationBarItem(
                     activeIcon: Icon(
                       Icons.settings,
-                      color: Get.isDarkMode ? mainColor : pinkClr,
+                      color: Get.isDarkMode ? pinkClr : mainColor,
                     ),
                     icon: Icon(
                       Icons.settings,
-                      color: Get.isDarkMode ? Colors.black : Colors.white,
+                      color: Get.isDarkMode ? Colors.white : Colors.black,
                     ),
                     label: ''),
               ],

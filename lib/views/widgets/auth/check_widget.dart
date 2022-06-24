@@ -27,12 +27,12 @@ class CheckWidget extends StatelessWidget {
               ),
               child: controller.isChecked
                   ? Get.isDarkMode
-                      ? Image.asset("assets/check.png")
-                      : const Icon(
+                      ? const Icon(
                           Icons.check,
                           size: 30,
                           color: pinkClr,
                         )
+                      : Image.asset("assets/check.png")
                   : Container(),
             ),
           ),
@@ -43,7 +43,7 @@ class CheckWidget extends StatelessWidget {
             children: [
               TextUtil(
                   text: "I accept",
-                  color: Get.isDarkMode ? Colors.black : Colors.white,
+                  color: Get.isDarkMode ? Colors.white : Colors.black,
                   fontSize: 16,
                   fontWeight: FontWeight.normal,
                   decoration: TextDecoration.none),
@@ -52,7 +52,7 @@ class CheckWidget extends StatelessWidget {
               ),
               TextUtil(
                   text: "terms & conditions",
-                  color: Get.isDarkMode ? Colors.black : Colors.white,
+                  color: Get.isDarkMode ? Colors.white : Colors.black,
                   fontSize: 16,
                   fontWeight: FontWeight.normal,
                   decoration: TextDecoration.underline)

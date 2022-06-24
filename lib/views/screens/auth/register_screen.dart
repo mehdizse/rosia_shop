@@ -31,9 +31,9 @@ class _RegisterScreenState extends State<RegisterScreen> {
       child: Scaffold(
         appBar: AppBar(
           elevation: 0,
-          backgroundColor: Get.isDarkMode ? Colors.white : darkGreyClr,
+          backgroundColor: Get.isDarkMode ? darkGreyClr : Colors.white,
         ),
-        backgroundColor: Get.isDarkMode ? Colors.white : darkGreyClr,
+        backgroundColor: context.theme.backgroundColor,
         body: SingleChildScrollView(
           child: Column(
             children: [
@@ -50,7 +50,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                           children: [
                             TextUtil(
                                 text: "SIGN",
-                                color: Get.isDarkMode ? mainColor : pinkClr,
+                                color: Get.isDarkMode ? pinkClr : mainColor,
                                 fontSize: 28,
                                 fontWeight: FontWeight.normal,
                                 decoration: TextDecoration.none),
@@ -60,8 +60,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
                             TextUtil(
                                 text: "UP",
                                 color: Get.isDarkMode
-                                    ? Colors.black
-                                    : Colors.white,
+                                    ? Colors.white
+                                    : Colors.black,
                                 fontSize: 28,
                                 fontWeight: FontWeight.normal,
                                 decoration: TextDecoration.none),

@@ -1,3 +1,4 @@
+import 'package:ecommerce_app/main.dart';
 import 'package:flutter/material.dart';
 import 'package:ecommerce_app/utils/theme.dart';
 import 'package:ecommerce_app/views/widgets/auth/auth_button.dart';
@@ -30,9 +31,9 @@ class _LoginScreenState extends State<LoginScreen> {
       child: Scaffold(
         appBar: AppBar(
           elevation: 0,
-          backgroundColor: Get.isDarkMode ? Colors.white : darkGreyClr,
+          backgroundColor: Get.isDarkMode ? darkGreyClr : Colors.white,
         ),
-        backgroundColor: Get.isDarkMode ? Colors.white : darkGreyClr,
+        backgroundColor: context.theme.backgroundColor,
         body: SingleChildScrollView(
           child: Column(
             children: [
@@ -49,7 +50,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           children: [
                             TextUtil(
                                 text: "LOG",
-                                color: Get.isDarkMode ? mainColor : pinkClr,
+                                color: Get.isDarkMode ? pinkClr : mainColor,
                                 fontSize: 28,
                                 fontWeight: FontWeight.normal,
                                 decoration: TextDecoration.none),
@@ -59,8 +60,8 @@ class _LoginScreenState extends State<LoginScreen> {
                             TextUtil(
                                 text: "IN",
                                 color: Get.isDarkMode
-                                    ? Colors.black
-                                    : Colors.white,
+                                    ? Colors.white
+                                    : Colors.black,
                                 fontSize: 28,
                                 fontWeight: FontWeight.normal,
                                 decoration: TextDecoration.none),
@@ -80,12 +81,12 @@ class _LoginScreenState extends State<LoginScreen> {
                             }
                           },
                           prefixIcon: Get.isDarkMode
-                              ? Image.asset("assets/email.png")
-                              : const Icon(
+                              ? const Icon(
                                   Icons.email,
                                   color: pinkClr,
                                   size: 30,
-                                ),
+                                )
+                              : Image.asset("assets/email.png"),
                           suffixIcon: const Text(""),
                           hintText: "Email",
                         ),
@@ -136,8 +137,8 @@ class _LoginScreenState extends State<LoginScreen> {
                             child: TextUtil(
                                 text: "Forget Password ?",
                                 color: Get.isDarkMode
-                                    ? Colors.black
-                                    : Colors.white,
+                                    ? Colors.white
+                                    : Colors.black,
                                 fontSize: 16,
                                 fontWeight: FontWeight.normal,
                                 decoration: TextDecoration.none),
@@ -163,7 +164,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         ),
                         TextUtil(
                             text: "OR",
-                            color: Get.isDarkMode ? Colors.black : Colors.white,
+                            color: Get.isDarkMode ? Colors.white : Colors.black,
                             fontSize: 18,
                             fontWeight: FontWeight.normal,
                             decoration: TextDecoration.none),

@@ -24,26 +24,26 @@ class _ForgetPasswordScreenState extends State<ForgetPasswordScreen> {
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
-          backgroundColor: Get.isDarkMode ? Colors.white : darkGreyClr,
+          backgroundColor: Get.isDarkMode ? darkGreyClr : Colors.white,
           elevation: 0,
           centerTitle: true,
           title: Text(
             "Forget Password",
             style: TextStyle(
-              color: Get.isDarkMode ? mainColor : pinkClr,
+              color: Get.isDarkMode ? pinkClr : mainColor,
             ),
           ),
           leading: IconButton(
             icon: Icon(
               Icons.arrow_back,
-              color: Get.isDarkMode ? Colors.black : Colors.white,
+              color: Get.isDarkMode ? Colors.white : Colors.black,
             ),
             onPressed: () {
               Get.back();
             },
           ),
         ),
-        backgroundColor: Get.isDarkMode ? Colors.white : darkGreyClr,
+        backgroundColor: context.theme.backgroundColor,
         body: Form(
           key: formKey,
           child: SingleChildScrollView(
@@ -70,7 +70,7 @@ class _ForgetPasswordScreenState extends State<ForgetPasswordScreen> {
                     "If you want to recover your account, then please provide your email ID below...",
                     textAlign: TextAlign.center,
                     style: TextStyle(
-                      color: Get.isDarkMode ? Colors.black : Colors.white,
+                      color: Get.isDarkMode ? Colors.white : Colors.black,
                     ),
                   ),
                   const SizedBox(

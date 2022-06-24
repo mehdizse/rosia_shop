@@ -1,9 +1,10 @@
 import 'package:ecommerce_app/routes/routes.dart';
+import 'package:ecommerce_app/views/screens/welcome_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
 import 'package:get/get.dart';
-import 'package:get/get_connect/http/src/utils/utils.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
 import '../../models/facebook_model.dart';
@@ -15,7 +16,9 @@ class AuthController extends GetxController {
   FacebookModel? facebookModel;
   var displayUserName = "";
   var displayUserPhoto = "";
-  var googleSignIn = GoogleSignIn().signIn();
+  var googleSignIn = GoogleSignIn();
+  var isSignedIn = false;
+  final GetStorage authBox = GetStorage();
 
   void visibility() {
     isVisibility = !isVisibility;
@@ -85,6 +88,8 @@ class AuthController extends GetxController {
           .then((value) {
         displayUserName = value.user!.displayName!;
       });
+      isSignedIn = true;
+      authBox.write("auth", isSignedIn);
       update();
       Get.offNamed(Routes.mainPage);
     } on FirebaseAuthException catch (error) {
@@ -155,6 +160,8 @@ class AuthController extends GetxController {
     final LoginResult loginResult = await FacebookAuth.instance.login();
     final data = await FacebookAuth.instance.getUserData();
     facebookModel = FacebookModel.fromJson(data);
+    isSignedIn = true;
+    authBox.write("auth", isSignedIn);
     print("===================");
     print(facebookModel!.name);
     print(facebookModel!.email);
@@ -164,9 +171,11 @@ class AuthController extends GetxController {
 
   Future<void> signUpUsginGoogle() async {
     try {
-      final GoogleSignInAccount? googleUser = await googleSignIn;
+      final GoogleSignInAccount? googleUser = await googleSignIn.signIn();
       displayUserName = googleUser!.displayName!;
       displayUserPhoto = googleUser.photoUrl!;
+      isSignedIn = true;
+      authBox.write("auth", isSignedIn);
       update();
       Get.offNamed(Routes.mainPage);
     } catch (error) {
@@ -180,5 +189,25 @@ class AuthController extends GetxController {
     }
   }
 
-  void logout() {}
+  void logout() async {
+    try {
+      await auth.signOut();
+      await googleSignIn.signOut();
+
+      displayUserName = '';
+      displayUserPhoto = '';
+      isSignedIn = false;
+      authBox.remove("auth");
+      update();
+      Get.offAllNamed(Routes.welcomePage);
+    } catch (error) {
+      Get.snackbar(
+        "Error!",
+        error.toString(),
+        snackPosition: SnackPosition.BOTTOM,
+        backgroundColor: Colors.green,
+        colorText: Colors.white,
+      );
+    }
+  }
 }

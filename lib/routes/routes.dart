@@ -9,6 +9,7 @@ import 'package:get/get.dart';
 
 class AppRoute {
   static const initalRoute = Routes.welcomePage;
+  static const mainScreen = Routes.mainPage;
 
   static final routes = [
     GetPage(name: Routes.welcomePage, page: () => const WelcomeScreen()),
