@@ -1,16 +1,13 @@
 # rosia_shop
 
-An ecommerce application.
+An ecommerce application to manage rosia shop store.
 
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+![Alt text](/screens/0.png "0.ppng")
+![Alt text](/screens/1.png "1.ppng")
+![Alt text](/screens/2.png "2.ppng")
+![Alt text](/screens/3.png "3.ppng")
+![Alt text](/screens/4.png "4.ppng")
+![Alt text](/screens/5.png "5.ppng")
+![Alt text](/screens/6.png "6.ppng")
+![Alt text](/screens/7.png "7.ppng")
+![Alt text](/screens/8.png "8.ppng")
